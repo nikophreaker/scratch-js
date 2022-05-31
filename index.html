@@ -106,13 +106,13 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="https://jennamolby.com/scratch-and-win/js/wScratchPad.min.js"></script>
+    <script type="text/javascript" src="lib/wScratchPad.min.js"></script>
 
     <script type="text/javascript">
         var promoCode = '';
-        var bg1 = 'https://jennamolby.com/scratch-and-win/images/400.png';
-        var bg2 = 'https://jennamolby.com/scratch-and-win/images/500.png';
-        var bg3 = 'https://jennamolby.com/scratch-and-win/images/sorry.png';
+        var bg1 = 'img/400.png';
+        var bg2 = 'img/500.png';
+        var bg3 = 'img/sorry.png';
         var bgArray = [bg1, bg2, bg3],
             selectBG = bgArray[Math.floor(Math.random() * bgArray.length)];
         if (selectBG == bg1) {
@@ -131,9 +131,9 @@
             // give real-time updates
             realtime: true,
             // The overlay image
-            fg: 'https://jennamolby.com/scratch-and-win/images/overlay.png',
+            fg: 'img/overlay.png',
             // The cursor (coin) image
-            'cursor': 'url("https://jennamolby.com/scratch-and-win/images/coin1.png") 5 5, default',
+            'cursor': 'url("img/coin1.png") 5 5, default',
 
             scratchMove: function (e, percent) {
                 // Show the plain-text promo code and call-to-action when the scratch area is 50% scratched
