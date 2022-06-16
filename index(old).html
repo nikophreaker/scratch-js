@@ -102,32 +102,59 @@
     </div>
     <div class="promo-container" style="display:none;">
         <div class="promo-code"></div>
-        <a href="htttp://jennamolby.com" target="_blank" class="btn">Register Now</a>
+        <a href="htttp://msportsid.com" target="_blank" class="btn">Register Now</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="lib/wScratchPad.min.js"></script>
 
     <script type="text/javascript">
-        var promoCode = '';
-        var bg1 = 'img/400.png';
-        var bg2 = 'img/500.png';
-        var bg3 = 'img/sorry.png';
-        var bgArray = [bg1, bg2, bg3],
-            selectBG = bgArray[Math.floor(Math.random() * bgArray.length)];
-        if (selectBG == bg1) {
-            promoCode = 'SCRATCH400';
-        } else if (selectBG == bg2) {
-            promoCode = 'SCRATCH500';
+        var prize1 = {
+            img: 'img/prize1.png',
+            text: 'MPoint 10000'
+        };
+        var prize2 = {
+            img: 'img/prize2.png',
+            text: 'MReferral 5000'
+        };
+        var prize3 = {
+            img: 'img/prize3.png',
+            text: 'MPoint 1000'
+        };
+        var prize4 = {
+            img: 'img/prize4.png',
+            text: 'MReferral 500'
+        };
+        var prize5 = {
+            img: 'img/prize5.png',
+            text: 'T-SHIRT'
+        };
+        var prize6 = {
+            img: 'img/prize6.png',
+            text: 'HOODIE'
+        };
+        var prize7 = {
+            img: 'img/sorry.png'
+        };
+        var prizeArray = [prize5, prize6];
+        for (var i = 0; i <= 2; i++) {
+            prizeArray.push(prize1);
+            prizeArray.push(prize2);
         }
-        if (selectBG == bg3) {
-            var promoCode = '';
+        for (var i = 0; i <= 5; i++) {
+            prizeArray.push(prize3);
+            prizeArray.push(prize4);
         }
+        for (var i = 0; i <= 50; i++) {
+            prizeArray.push(prize7);
+        }
+        selectPrize = prizeArray[Math.floor(Math.random() * prizeArray.length)];
+
         $('#promo').wScratchPad({
             // the size of the eraser
             size: 70,
             // the randomized scratch image   
-            bg: selectBG,
+            bg: selectPrize.img,
             // give real-time updates
             realtime: true,
             // The overlay image
@@ -137,10 +164,10 @@
 
             scratchMove: function (e, percent) {
                 // Show the plain-text promo code and call-to-action when the scratch area is 50% scratched
-                if ((percent > 50) && (promoCode != '')) {
+                if ((percent > 50) && (selectPrize.text != undefined)) {
                     $('.promo-container').show();
                     $('body').removeClass('not-selectable');
-                    $('.promo-code').html('Your code is: ' + promoCode);
+                    $('.promo-code').html('Congrats You Got: ' + selectPrize.text);
                 }
             }
         });

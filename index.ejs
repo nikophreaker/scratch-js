@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700italic,700'
+        rel='stylesheet' type='text/css'>
+
+    <title>Scratch Card</title>
+    <style type="text/css">
+        html {
+            box-sizing: border-box;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        .scratchpad {
+            width: 450px;
+            height: 445px;
+            border: solid 10px #FFFFFF;
+            margin: 0 auto;
+        }
+
+        body {
+            background: #efefef;
+        }
+
+        .scratch-container {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            width: 100%;
+        }
+
+        @media only screen and (max-width : 480px) {
+            .scratchpad {
+                width: 400px;
+                height: 396px;
+            }
+
+            .scratch-container {
+                width: 400px !important;
+            }
+        }
+
+        /* Custom, iPhone Retina */
+        @media only screen and (max-width : 320px) {
+            .scratchpad {
+                width: 290px;
+                height: 287px;
+            }
+
+            .scratch-container {
+                width: 290px !important;
+            }
+        }
+
+        .promo-container {
+            background: #FFF;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            width: 450px;
+            padding: 20px;
+            margin: 0 auto;
+            text-align: center;
+            font-family: 'Open Sans', Arial, Sans-serif;
+            color: #333;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background: #56CFD2;
+            color: #FFF;
+            padding: 10px 25px;
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 3px;
+            -moz-border-radius: 3px;
+            -webkit-border-radiuss: 3px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="scratch-container">
+        <div id="promo" class="scratchpad"></div>
+    </div>
+    <div class="promo-container" style="display:none;">
+        <div class="promo-code"></div>
+        <a href="htttp://msportsid.com" target="_blank" class="btn">Claim Now</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="lib/wScratchPad.min.js"></script>
+
+    <script type="text/javascript">
+        var userToken = "<%= token %>";
+        var ticket;
+
+        fetch('https://api.msportsid.com/api/game/tiket', {
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${userToken}`
+            }
+        }).then(res => {
+            res.json().then(res2 => {
+                ticket = res2.data[0].tiket;
+                console.log(res2.data[0].tiket)
+            })
+        }).catch(err => {
+            console.log(err)
+        });
+
+        var prize1 = {
+            img: 'img/prize1.png',
+            text: 'MPoint 10000'
+        };
+        var prize2 = {
+            img: 'img/prize2.png',
+            text: 'MReferral 5000'
+        };
+        var prize3 = {
+            img: 'img/prize3.png',
+            text: 'MPoint 1000'
+        };
+        var prize4 = {
+            img: 'img/prize4.png',
+            text: 'MReferral 500'
+        };
+        var prize5 = {
+            img: 'img/prize5.png',
+            text: 'T-SHIRT'
+        };
+        var prize6 = {
+            img: 'img/prize6.png',
+            text: 'HOODIE'
+        };
+        var prize7 = {
+            img: 'img/sorry.png'
+        };
+
+        var prizeArray = [prize5, prize6];
+
+        for (var i = 0; i <= 2; i++) {
+            prizeArray.push(prize1);
+            prizeArray.push(prize2);
+        }
+        for (var i = 0; i <= 5; i++) {
+            prizeArray.push(prize3);
+            prizeArray.push(prize4);
+        }
+        for (var i = 0; i <= 50; i++) {
+            prizeArray.push(prize7);
+        }
+        selectPrize = prizeArray[Math.floor(Math.random() * prizeArray.length)];
+
+        this.startTheGame();
+
+        function startTheGame() {
+
+            fetch('https://api.msportsid.com/api/game/fortunewheel/start', {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${userToken}`
+                }
+            }).then(res => {
+                res.json().then(res2 => {
+                    if (res2.messege != undefined) {
+                        // promt view to know your ticket insufficient
+                        Android.showToast(res2.messege);
+                        console.log(res2.messege);
+                    } else {
+                        this.setGame();
+                        ticket = res2.data[0].tiket - 1;
+                        console.log("GOSOK GOSOK");
+                    }
+                });
+            });
+
+        }
+
+        function setGame() {
+
+            $('#promo').wScratchPad({
+                // the size of the eraser
+                size: 70,
+                // the randomized scratch image   
+                bg: selectPrize.img,
+                // give real-time updates
+                realtime: true,
+                // The overlay image
+                fg: 'img/overlay.png',
+                // The cursor (coin) image
+                'cursor': 'url("img/coin1.png") 5 5, default',
+
+                scratchMove: function (e, percent) {
+                    // Show the plain-text promo code and call-to-action when the scratch area is 50% scratched
+                    if ((percent > 50) && (selectPrize.text != undefined)) {
+                        $('.promo-container').show();
+                        $('body').removeClass('not-selectable');
+                        $('.promo-code').html('Congrats You Got: ' + selectPrize.text);
+                    }
+                }
+            });
+
+        }
+    </script>
+
+</body>
+
+</html>
