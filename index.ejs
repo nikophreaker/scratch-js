@@ -136,39 +136,53 @@
             text: 'MReferral 5000'
         };
         var prize3 = {
-            img: 'img/prize3.png',
-            text: 'MPoint 1000'
-        };
-        var prize4 = {
-            img: 'img/prize4.png',
-            text: 'MReferral 500'
-        };
-        var prize5 = {
             img: 'img/prize5.png',
             text: 'T-SHIRT'
         };
-        var prize6 = {
+        var prize4 = {
             img: 'img/prize6.png',
             text: 'HOODIE'
+        };
+        var prize5 = {
+            img: 'img/prize3.png',
+            text: 'MPoint 1000'
+        };
+        var prize6 = {
+            img: 'img/prize4.png',
+            text: 'MReferral 500'
         };
         var prize7 = {
             img: 'img/sorry.png'
         };
 
-        var prizeArray = [prize5, prize6];
+        // var prizeArray = [prize1, prize2, prize5, prize6];
+        var prizeArray = [prize1, prize2, prize3, prize4, prize5, prize6, prize7];
 
-        for (var i = 0; i <= 2; i++) {
-            prizeArray.push(prize1);
-            prizeArray.push(prize2);
+        // for (var i = 0; i <= 46; i++) {
+        //     prizeArray.push(prize3);
+        //     prizeArray.push(prize4);
+        // }
+
+        // for (var i = 0; i <= 50; i++) {
+        //     prizeArray.push(prize7);
+        // }
+
+        // selectPrize = prizeArray[Math.floor(Math.random() * prizeArray.length)];
+
+        var rand = Math.random();
+        if (rand < 0.3) {
+            selectPrize = prizeArray[6]
+        } else if (rand < 0.6) {
+            selectPrize = prizeArray[6]
+        } else if (rand <= 0.9) {
+            selectPrize = prizeArray[Math.floor(Math.random() * (5 - 4 + 1)) + 4]
+        } else if (rand > 0.9) {
+            selectPrize = prizeArray[Math.floor(Math.random() * (3 - 0 + 1)) + 0]
+        } else {
+            selectPrize = prizeArray[6]
         }
-        for (var i = 0; i <= 5; i++) {
-            prizeArray.push(prize3);
-            prizeArray.push(prize4);
-        }
-        for (var i = 0; i <= 50; i++) {
-            prizeArray.push(prize7);
-        }
-        selectPrize = prizeArray[Math.floor(Math.random() * prizeArray.length)];
+
+        console.log(`Get Random Number : ${rand}`);
 
         this.startTheGame();
 
