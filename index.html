@@ -173,11 +173,11 @@
 
     <script type="text/javascript">
         // var userToken = "<%= token %>";
-        var userToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luZ29vZ2xlIiwiaWF0IjoxNjc3NjQzOTc0LCJuYmYiOjE2Nzc2NDM5NzQsImp0aSI6ImlvV2ROYXlPbkVUZHE5ZFUiLCJzdWIiOiIxNDEiLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.0L5QK4ExVkTJQhM85FJ-vMCiipq7NZliPpKus9cr7FU"
+        var userToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21zcG9ydHNpZC5jb20vYXBpL2xvZ2luZ29vZ2xlIiwiaWF0IjoxNjc3NzQ5MzAwLCJuYmYiOjE2Nzc3NDkzMDAsImp0aSI6IlFOaTlxOHRYN0hkbWw3RjAiLCJzdWIiOiI0NTciLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.76hrGlpyUbDX-dmNKYmb_Ql-nm613nDX-pVy8id9tiQ"
         var ticket;
 
-        // fetch('https://api.msportsid.com/api/game/tiket', {
-        fetch('http://127.0.0.1:8000/api/game/tiket', {
+        fetch('https://api.msportsid.com/api/game/tiket', {
+        // fetch('http://127.0.0.1:8000/api/game/tiket', {
         
             method: 'get',
             headers: {
@@ -301,8 +301,8 @@
 
         function startTheGame() {
 
-            // fetch('https://api.msportsid.com/api/game/fortunewheel/start', {
-            fetch('http://127.0.0.1:8000/api/game/fortunewheel/start', {
+            fetch('https://api.msportsid.com/api/game/fortunewheel/start', {
+            // fetch('http://127.0.0.1:8000/api/game/fortunewheel/start', {
 
                 method: 'get',
                 headers: {
