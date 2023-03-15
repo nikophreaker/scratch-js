@@ -47,32 +47,23 @@ const rand3 = Math.floor(Math.random() * (max - min + 1)) + min;
 
 
 selectPrize1 = prizeArray[0];
-selectPrize2 = prizeArray[1];
+selectPrize2 = prizeArray[0];
+selectPrize3 = prizeArray[1];
+
 // if  (rand1 === 1 || rand1 === 2){
 //     selectPrize1 = prizeArray[0];
 //     selectPrize2 = prizeArray[1];
 // }
 
-if (rand2 === 1 || rand2 === 2 ) {
-    selectPrize3 = prizeArray[1];
-    if (selectPrize2 == prizeArray[0] && selectPrize1 == prizeArray[0]) {
-        selectPrize1 = prizeArray[0];
-        selectPrize2 = prizeArray[1];
-        if (selectPrize3 == prizeArray[1] && selectPrize1 == prizeArray[0]) {
-          selectPrize3 = prizeArray[0];
-          selectPrize1 = prizeArray[1];
-        }
-        console.log("www");
+if (rand1 === 1 ) {
+    selectPrize1;
+    selectPrize2;
+    selectPrize3;
+    if(selectPrize2 === selectPrize1 || selectPrize1 === selectPrize3){
+        selectPrize1 = selectPrize3;
+
     }
     
-        if (selectPrize3 == prizeArray[1] && selectPrize2 == prizeArray[1]) {
-          selectPrize3 = prizeArray[0];
-          selectPrize2 = prizeArray[1];
-            if (selectPrize1 == prizeArray[0] && selectPrize3 == prizeArray[0]) {
-              selectPrize1 = prizeArray[0];
-              selectPrize3 = prizeArray[1];
-            }
-        }
 }
 
 
@@ -118,6 +109,7 @@ function setGame() {
 
                 $("body").removeClass("not-selectable");
                 $(".promo-code").html("Congrats You Got: " + selectPrize1.text);
+
             }
             if (percent > 2) {
                 promo1 = percent;
@@ -129,8 +121,10 @@ function setGame() {
             promo3.wScratchPad("clear").show();
             // console.log(promo2.show());
             }
+
         },
     });
+
 
     $("#promo2").wScratchPad({
         // the size of the eraser
@@ -197,6 +191,7 @@ function setGame() {
             }
         },
     });
+
 
     $("#promo01").wScratchPad({
         // the size of the eraser
