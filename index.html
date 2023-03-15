@@ -3,578 +3,112 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta http-equiv="cleartype" content="on" />
 
     <link
         href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700italic,700'
         rel='stylesheet' type='text/css'>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
     <title>Scratch Card</title>
-    <style type="text/css">
-        html {
-            box-sizing: border-box;
-        }
-
-        *,
-        *:before,
-        *:after {
-            box-sizing: inherit;
-        }
-
-        .scratchpad {
-            width: 450px;
-            height: 445px;
-            border: solid 10px #FFFFFF;
-            margin: 0 auto;
-        }
-
-        body {
-            background: #efefef;
-            /* background: #000; */
-
-        }
-
-        .scratch-container {
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            width: 100%;
-        }
-
-        @media only screen and (max-width : 480px) {
-            .scratchpad {
-                width: 400px;
-                height: 396px;
-            }
-
-            .scratch-container {
-                width: 400px !important;
-            }
-        }
-
-        /* Custom, iPhone Retina */
-        @media only screen and (max-width : 320px) {
-            .scratchpad {
-                width: 290px;
-                height: 287px;
-            }
-
-            .scratch-container {
-                width: 290px !important;
-            }
-        }
-
-        .promo-container {
-            background: #FFF;
-            border-radius: 5px;
-            -moz-border-radius: 5px;
-            -webkit-border-radius: 5px;
-            width: 450px;
-            padding: 20px;
-            margin: 0 auto;
-            text-align: center;
-            font-family: 'Open Sans', Arial, Sans-serif;
-            color: #333;
-            font-size: 16px;
-            margin-top: 20px;
-        }
-
-        .btn {
-            background: #56CFD2;
-            color: #FFF;
-            padding: 10px 25px;
-            display: inline-block;
-            margin-top: 15px;
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            border-radius: 3px;
-            -moz-border-radius: 3px;
-            -webkit-border-radiuss: 3px;
-        }
-    </style>
+    <link href="./css/index.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <!-- <div class="container">
-        <div class="row no-gutter mt-5">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="scratchpad" id="promo"></div>
-                        
+    <div class="container" >
+        <div id="canvas"> </div>
+      
+        <div class="scratch-container mt-3" id="scratch" style="position: relative;">
+        <!-- <div class="scratch-container mt-3" id="scratch" style="position: relative; visibility: hidden;"> -->
+
+            <div class="d-flex flex-column justify-content-center">
+                <div class="col-md-12">
+                    <div class="d-flex align-items-center logo">
+                        <img class="img-fluid mx-auto img-logo lazyload" loading="lazy" src="./img/logo1.png">
                     </div>
                 </div>
             </div>
+            <div class="text-center mt-3 text-white">
+                <h5>SCRATCH HERE & CLAIM YOUR PRIZE!</h5>
+            </div>
+            <div class="row gy-3">
+                <div class="col-md-4">
+                    <div hidden id="promo" class="scratchpad"></div>
+                    <div style="pointer-events: visible;" id="promo01" class="scratchpad"></div>
+                </div>
+                <div class="col-md-4">
+                    <div hidden id="promo2" class="scratchpad"></div>
+                    <div style="pointer-events: visible;" id="promo02" class="scratchpad"></div>
+                </div>
+                <div class="col-md-4">
+                    <div hidden id="promo3" class="scratchpad"></div>
+                    <div style="pointer-events: visible;" id="promo03" class="scratchpad"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- <div class="">
+        <div class="scratch-container" id="scratch" style="position: relative;">
+            <div class="d-flex flex-row">
+                <div class="p-2">
+                    <div hidden id="promo" class="scratchpad"></div>
+                    <div style="pointer-events: visible;" id="promo01" class="scratchpad"></div>
+                </div>
+            </div>
+            <div class="row mt-5 p-3">
+                <div class="col-md-6">
+                    <div hidden id="promo" class="scratchpad"></div>
+                    <div style="pointer-events: visible;" id="promo01" class="scratchpad"></div>
+                </div>
         
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        Featured
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
+                <div class="col-md-6">
+                    <div hidden id="promo2" class="scratchpad"></div>
+                    <div style="pointer-events: visible;" id="promo02" class="scratchpad"></div>
                 </div>
             </div>
-            <div class="col-md-6 offset-md-3">
-                <div class="card">
-                    <div class="card-header">
-                        Featured
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
+            <div class="row mt-5">
+                <div class="col-md-6 offset-md-3">
+                    <div hidden id="promo3" class="scratchpad"></div>
+                    <div style="pointer-events: visible;" id="promo03" class="scratchpad"></div>
                 </div>
             </div>
         </div>
     </div> -->
 
-    <div class="scratch-container">
-        <div class="row mt-5 p-3">
-            <div class="col-md-6">
-                <div hidden id="promo" class="scratchpad"></div>
-                <div style="pointer-events: visible;" id="promo01" class="scratchpad"></div>
-            </div>
 
-            <div class="col-md-6">
-                <div hidden id="promo2" class="scratchpad"></div>
-                <div style="pointer-events: visible;" id="promo02" class="scratchpad"></div>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-6 offset-md-3">
-                <div hidden id="promo3" class="scratchpad"></div>
-                <div style="pointer-events: visible;" id="promo03" class="scratchpad"></div>
-            </div>
-        </div>
-    </div>
+    
 
-    <!-- <div class="promo-container" style="display:none;"> -->
+  
+    <!-- <div class="promo-container" style="display:none;">
     <div class="promo-container">
 
-        <div class="promo-code"></div>
+    <div class="promo-code"></div>
         <a href="https://msportsid.com" target="_blank" class="btn">Claim Now</a>
-    </div>
+    </div> -->
 
     <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="lib/wScratchPad.min.js"></script>
+    <!-- <script src="./phaser.js"></script> -->
 
-    <script type="text/javascript">
-        // var userToken = "<%= token %>";
-        var userToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5tc3BvcnRzaWQuY29tL2FwaS9sb2dpbiIsImlhdCI6MTY3NzY2MDk4MCwibmJmIjoxNjc3NjYwOTgwLCJqdGkiOiJUMVB4OThITXVTZ1I4TXk3Iiwic3ViIjoiMzA1OCIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.gb9FBwolL8lOWJcujTAFHNVWNMjO0zBadOikxn1us0g"
-        var ticket;
+    <script type="text/javascript" src="./js/scratch.js"></script>
+    <script src="dist/bundle.js"></script>
 
-        fetch('https://api.msportsid.com/api/game/tiket', {
-            method: 'get',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${userToken}`
-            }
-        }).then(res => {
-            res.json().then(res2 => {
-                ticket = res2.data[0].tiket;
-                console.log(res2.data[0].tiket)
-            })
-        }).catch(err => {
-            console.log(err)
-        });
+    <!-- O6QG4 -->
 
-        var prize1 = {
-            img: 'img/prize1.png',
-            text: 'MPoint 10000'
-        };
-        var prize2 = {
-            img: 'img/prize2.png',
-            text: 'MReferral 5000'
-        };
-        var prize3 = {
-            img: 'img/prize5.png',
-            text: 'T-SHIRT'
-        };
-        var prize4 = {
-            img: 'img/prize6.png',
-            text: 'HOODIE'
-        };
-        var prize5 = {
-            img: 'img/prize3.png',
-            text: 'MPoint 1000'
-        };
-        var prize6 = {
-            img: 'img/prize4.png',
-            text: 'MReferral 500'
-        };
-        var prize7 = {
-            img: 'img/sorry.png'
-        };
-
-        // var prizeArray = [prize1, prize2, prize5, prize6];
-        // var prizeArray = [prize1, prize2, prize3, prize4, prize5, prize6, prize7];
-        var prizeArray = [prize1, prize2, prize3];
-
-
-        // for (var i = 0; i <= 46; i++) {
-        //     prizeArray.push(prize3);
-        //     prizeArray.push(prize4);
-        // }
-
-        // for (var i = 0; i <= 50; i++) {
-        //     prizeArray.push(prize7);
-        // }
-
-        // selectPrize = prizeArray[Math.floor(Math.random() * prizeArray.length)];
-
-
-        const min = parseInt(1);
-        const max = parseInt(3);
-        const rand = Math.floor(Math.random() * (max - min + 1)) + min;
-        const rand1 = Math.floor(Math.random() * (max - min + 1)) + min;
-        const rand2 = Math.floor(Math.random() * (max - min + 1)) + min;
-
-        if (rand == 1) {
-            selectPrize = prizeArray[0]
-        } else if (rand == 2) {
-            selectPrize = prizeArray[0]
-        } else if (rand == 3) {
-            selectPrize = prizeArray[0]
-        }
-
-
-        if (rand1 == 2) {
-            selectPrize1 = prizeArray[1]
-        } else if (rand1 == 3) {
-            selectPrize1 = prizeArray[2]
-        } else if (rand1 == 1) {
-            selectPrize1 = prizeArray[0]
-        }
-
-        if (rand2 == 3) {
-            selectPrize2 = prizeArray[2]
-        } else if (rand2 == 1) {
-            selectPrize2 = prizeArray[0]
-        } else if (rand2 == 2) {
-            selectPrize2 = prizeArray[1]
-        }
-
-        if ((rand == 1) && (rand1 == 1) && (rand2 == 1)) {
-            prize = prize1;
-            console.log(prize);
-
-        }
-
-
-        console.log(rand);
-        console.log(rand1);
-        console.log(rand2);
-
-        // console.log(selectPrize);
-
-        // var rand = Math.random();
-        // if (rand < 0.3) {
-        //     selectPrize = prizeArray[6]
-        // } else if (rand < 0.6) {
-        //     selectPrize = prizeArray[6]
-        // } else if (rand <= 0.9) {
-        //     selectPrize = prizeArray[Math.floor(Math.random() * (5 - 4 + 1)) + 4]
-        // } else if (rand > 0.9) {
-        //     selectPrize = prizeArray[Math.floor(Math.random() * (3 - 0 + 1)) + 0]
-        // } else {
-        //     selectPrize = prizeArray[6]
-        // }
-
-        // console.log(`Get Random Number : ${rand}`);
-
-        this.startTheGame();
-
-        function startTheGame() {
-
-            fetch('https://api.msportsid.com/api/game/fortunewheel/start', {
-                method: 'get',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${userToken}`
-                }
-            }).then(res => {
-                res.json().then(res2 => {
-                    if (res2.messege != undefined) {
-                        // promt view to know your ticket insufficient
-                        Android.showToast(res2.messege);
-                        console.log(res2.messege);
-                    } else {
-                        this.setGame();
-                        ticket = res2.data[0].tiket - 1;
-                        console.log("GOSOK GOSOK");
-                    }
-                });
-            });
-
-        }
-
-        function setGame() {
-
-            var promo1 = $('#promo');
-            var promo2 = $('#promo2');
-            var promo3 = $('#promo3');
-            var promo01 = $('#promo01');
-            var promo02 = $('#promo02');
-            var promo03 = $('#promo03');
-            var scratch;
-
-            $('#promo').wScratchPad({
-                // the size of the eraser
-                size: 70,
-                // the randomized scratch image   
-                bg: selectPrize.img,
-                // give real-time updates
-                realtime: true,
-                // The overlay image
-                fg: 'img/overlay.png',
-                // The cursor (coin) image
-                'cursor': 'url("img/coin1.png") 5 5, default',
-
-                scratchMove: function (e, percent) {
-                    // Show the plain-text promo code and call-to-action when the scratch area is 50% scratched
-
-                    if ((percent > 50) && (selectPrize.text != undefined)) {
-                        $('.promo-container').show();
-                        $('body').removeClass('not-selectable');
-                        $('.promo-code').html('Congrats You Got: ' + selectPrize.text);
-                    }
-
-                    if (percent > 2) {
-                        promo1 = percent;
-                        promo2.prop("disabled", true);
-                        promo3.prop("disabled", true);
-                    }
-
-                    if (promo1 > 50) {
-                        promo2.wScratchPad('clear').show();
-                        promo3.wScratchPad('clear').show();
-                        // console.log(promo2.show());
-                    }
-                }
-            });
-
-            $('#promo2').wScratchPad({
-                // the size of the eraser
-                size: 70,
-                // the randomized scratch image   
-                bg: selectPrize1.img,
-                // give real-time updates
-                realtime: true,
-                // The overlay image
-                fg: 'img/overlay.png',
-                // The cursor (coin) image
-                'cursor': 'url("img/coin1.png") 5 5, default',
-
-                scratchMove: function (e, percent) {
-                    // Show the plain-text promo code and call-to-action when the scratch area is 50% scratched
-                    if ((percent > 50) && (selectPrize1.text != undefined)) {
-                        $('.promo-container').show();
-                        $('body').removeClass('not-selectable');
-                        $('.promo-code').html('Congrats You Got: ' + selectPrize1.text);
-                    }
-
-                    if (percent > 2) {
-                        promo2 = percent;
-                        promo1.prop("disabled", true);
-                        promo3.prop("disabled", true);
-                    }
-
-                    if (promo2 > 50) {
-                        promo1.wScratchPad('clear').show();
-                        promo3.wScratchPad('clear').show();
-                    }
-
-                }
-            });
-
-            $('#promo3').wScratchPad({
-                // the size of the eraser
-                size: 70,
-                // the randomized scratch image   
-                bg: selectPrize2.img,
-                // give real-time updates
-                realtime: true,
-                // The overlay image
-                fg: 'img/overlay.png',
-                // The cursor (coin) image
-                'cursor': 'url("img/coin1.png") 5 5, default',
-
-                scratchMove: function (e, percent) {
-                    // Show the plain-text promo code and call-to-action when the scratch area is 50% scratched
-                    if ((percent > 50) && (selectPrize2.text != undefined)) {
-                        $('.promo-container').show();
-                        $('body').removeClass('not-selectable');
-                        $('.promo-code').html('Congrats You Got: ' + selectPrize2.text);
-                    }
-
-                    if (percent > 2) {
-                        promo3 = percent;
-                        promo1.prop("disabled", true);
-                        promo2.prop("disabled", true);
-                    }
-
-                    if (promo3 > 50) {
-                        promo1.wScratchPad('clear').show();
-                        promo2.wScratchPad('clear').show();
-                    }
-                }
-            });
-
-            $('#promo01').wScratchPad({
-                // the size of the eraser
-                size: 70,
-                // the randomized scratch image
-                bg: prize6.img,
-                // give real-time updates
-                realtime: true,
-                // The overlay image
-                fg: 'img/overlay.png',
-                // The cursor (coin) image
-                'cursor': 'url("img/coin1.png") 5 5, default',
-
-                scratchMove: function (e, percent) {
-                    // Show the plain-text promo code and call-to-action when the scratch area is 50% scratched
-
-                    if ((percent > 50) && (prize6.text != undefined)) {
-                        $('.promo-container').show();
-                        $('body').removeClass('not-selectable');
-                        $('.promo-code').html('Congrats You Got: ' + prize6.text);
-                    }
-
-                    if (percent > 2) {
-                        promo01 = percent;
-                        promo02.prop("disabled", true);
-                        promo03.prop("disabled", true);
-                        document.getElementById('promo02').style.pointerEvents = "none";
-                        document.getElementById('promo03').style.pointerEvents = "none";
-                    }
-
-                    if (promo01 > 50) {
-                        promo2.wScratchPad('clear').show();
-                        promo3.wScratchPad('clear').show();
-                        document.getElementById('promo2').removeAttribute("hidden");
-                        document.getElementById('promo3').removeAttribute("hidden");
-                        promo02.wScratchPad('clear').hide();
-                        promo03.wScratchPad('clear').hide();
-                        // console.log(promo2.show());
-                    }
-                }
-            });
-
-            $('#promo02').wScratchPad({
-                // the size of the eraser
-                size: 70,
-                // the randomized scratch image   
-                bg: prize6.img,
-                // give real-time updates
-                realtime: true,
-                // The overlay image
-                fg: 'img/overlay.png',
-                // The cursor (coin) image
-                'cursor': 'url("img/coin1.png") 5 5, default',
-
-                scratchMove: function (e, percent) {
-                    // Show the plain-text promo code and call-to-action when the scratch area is 50% scratched
-
-                    if ((percent > 50) && (prize6.text != undefined)) {
-                        $('.promo-container').show();
-                        $('body').removeClass('not-selectable');
-                        $('.promo-code').html('Congrats You Got: ' + prize6.text);
-                    }
-
-                    if (percent > 2) {
-                        promo02 = percent;
-                        promo01.prop("disabled", true);
-                        promo03.prop("disabled", true);
-                        document.getElementById('promo01').style.pointerEvents = "none";
-                        document.getElementById('promo03').style.pointerEvents = "none";
-                    }
-
-                    if (promo02 > 50) {
-                        promo1.wScratchPad('clear').show();
-                        promo3.wScratchPad('clear').show();
-                        document.getElementById('promo').removeAttribute("hidden");
-                        document.getElementById('promo3').removeAttribute("hidden");
-                        promo01.wScratchPad('clear').hide();
-                        promo03.wScratchPad('clear').hide();
-                        // console.log(promo2.show());
-                    }
-                }
-            });
-
-            $('#promo03').wScratchPad({
-                // the size of the eraser
-                size: 70,
-                // the randomized scratch image   
-                bg: prize6.img,
-                // give real-time updates
-                realtime: true,
-                // The overlay image
-                fg: 'img/overlay.png',
-                // The cursor (coin) image
-                'cursor': 'url("img/coin1.png") 5 5, default',
-
-                scratchMove: function (e, percent) {
-                    // Show the plain-text promo code and call-to-action when the scratch area is 50% scratched
-
-                    if ((percent > 50) && (prize6.text != undefined)) {
-                        $('.promo-container').show();
-                        $('body').removeClass('not-selectable');
-                        $('.promo-code').html('Congrats You Got: ' + prize6.text);
-                    }
-
-                    if (percent > 2) {
-                        promo03 = percent;
-                        promo01.prop("disabled", true);
-                        promo02.prop("disabled", true);
-                        document.getElementById('promo01').style.pointerEvents = "none";
-                        document.getElementById('promo02').style.pointerEvents = "none";
-                    }
-
-                    if (promo03 > 50) {
-                        promo1.wScratchPad('clear').show();
-                        promo2.wScratchPad('clear').show();
-                        document.getElementById('promo').removeAttribute("hidden");
-                        document.getElementById('promo2').removeAttribute("hidden");
-                        promo01.wScratchPad('clear').hide();
-                        promo02.wScratchPad('clear').hide();
-                        // console.log(promo2.show());
-                    }
-                }
-            });
-
-        }
-
-    </script>
-
-
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 </body>
 
 </html>
