@@ -21,7 +21,6 @@
 //   });
 
 
-
 var prize1 = {
   img: "img/25ribu.png",
   text: "Rp 25.000",
@@ -47,23 +46,31 @@ const rand3 = Math.floor(Math.random() * (max - min + 1)) + min;
 
 
 selectPrize1 = prizeArray[0];
-selectPrize2 = prizeArray[0];
-selectPrize3 = prizeArray[1];
-
+selectPrize2 = prizeArray[1];
 // if  (rand1 === 1 || rand1 === 2){
 //     selectPrize1 = prizeArray[0];
 //     selectPrize2 = prizeArray[1];
 // }
 
-if (rand1 === 1 ) {
-    selectPrize1;
-    selectPrize2;
-    selectPrize3;
-    if(selectPrize2 === selectPrize1 || selectPrize1 === selectPrize3){
-        selectPrize1 = selectPrize3;
-
+if (rand2 === 1 || rand2 === 2 ) {
+    selectPrize3 = prizeArray[1];
+    if (selectPrize2 == prizeArray[0] && selectPrize1 == prizeArray[0]) {
+        selectPrize1 = prizeArray[0];
+        selectPrize2 = prizeArray[1];
+        if (selectPrize3 == prizeArray[1] && selectPrize1 == prizeArray[0]) {
+          selectPrize3 = prizeArray[0];
+          selectPrize1 = prizeArray[1];
+        }
+        console.log("www");
     }
-    
+    if (selectPrize3 == prizeArray[1] && selectPrize2 == prizeArray[1]) {
+      selectPrize3 = prizeArray[0];
+      selectPrize2 = prizeArray[1];
+        if (selectPrize1 == prizeArray[0] && selectPrize3 == prizeArray[0]) {
+          selectPrize1 = prizeArray[0];
+          selectPrize3 = prizeArray[1];
+        }
+    }
 }
 
 
@@ -76,8 +83,6 @@ console.log(rand3, selectPrize3);
 
 
 this.setGame();
-
-
 
 function setGame() {
     var promo1 = $("#promo");
@@ -105,11 +110,8 @@ function setGame() {
 
             if (percent > 50 && selectPrize1.text != undefined) {
                 $(".promo-container").show();
-                $("#exampleModal").show();
-
                 $("body").removeClass("not-selectable");
                 $(".promo-code").html("Congrats You Got: " + selectPrize1.text);
-
             }
             if (percent > 2) {
                 promo1 = percent;
@@ -117,14 +119,13 @@ function setGame() {
                 promo3.prop("disabled", true);
             }
             if (promo1 > 50) {
+                
             promo2.wScratchPad("clear").show();
             promo3.wScratchPad("clear").show();
             // console.log(promo2.show());
             }
-
         },
     });
-
 
     $("#promo2").wScratchPad({
         // the size of the eraser
@@ -141,9 +142,9 @@ function setGame() {
         scratchMove: function (e, percent) {
         // Show the plain-text promo code and call-to-action when the scratch area is 50% scratched
             if (percent > 50 && selectPrize2.text != undefined) {
-              $(".promo-container").show();
-              $("body").removeClass("not-selectable");
-              $(".promo-code").html("Congrats You Got: " + selectPrize2.text);
+                $(".promo-container").show();
+                $("body").removeClass("not-selectable");
+                $(".promo-code").html("Congrats You Got: " + selectPrize2.text);
             }
 
             if (percent > 2) {
@@ -158,7 +159,7 @@ function setGame() {
             }
         },
     });
-
+    
     $("#promo3").wScratchPad({
         // the size of the eraser
             size: 70,
@@ -175,6 +176,7 @@ function setGame() {
             // Show the plain-text promo code and call-to-action when the scratch area is 50% scratched
             if (percent > 50 && selectPrize3.text != undefined) {
                 $(".promo-container").show();
+
                 $("body").removeClass("not-selectable");
                 $(".promo-code").html("Congrats You Got: " + selectPrize3.text);
             }
@@ -192,7 +194,6 @@ function setGame() {
         },
     });
 
-
     $("#promo01").wScratchPad({
         // the size of the eraser
         size: 70,
@@ -209,7 +210,10 @@ function setGame() {
         // Show the plain-text promo code and call-to-action when the scratch area is 50% scratched
 
             if (percent > 50 && prize1.text != undefined) {
-                $(".promo-container").show();
+                // $(".promo-container").show();
+                console.log(game);
+                $("#exampleModal").modal("show");
+
                 $("body").removeClass("not-selectable");
                 $(".promo-code").html("Congrats You Got: " + prize1.text);
             }
@@ -223,6 +227,8 @@ function setGame() {
             }
 
             if (promo01 > 50) {
+                document.getElementById("promo2").children[0].src = prize2.img;
+                document.getElementById("promo3").children[0].src = prize3.img;
                 promo2.wScratchPad("clear").show();
                 promo3.wScratchPad("clear").show();
                 document.getElementById("promo2").removeAttribute("hidden");
@@ -251,6 +257,8 @@ function setGame() {
 
             if (percent > 50 && prize1.text != undefined) {
                 $(".promo-container").show();
+                $("#exampleModal").modal("show");
+
                 $("body").removeClass("not-selectable");
                 $(".promo-code").html("Congrats You Got: " + prize1.text);
             }
@@ -264,6 +272,8 @@ function setGame() {
             }
 
             if (promo02 > 50) {
+                document.getElementById("promo").children[0].src = prize2.img;
+                document.getElementById("promo3").children[0].src = prize3.img;
                 promo1.wScratchPad("clear").show();
                 promo3.wScratchPad("clear").show();
                 document.getElementById("promo").removeAttribute("hidden");
@@ -305,6 +315,8 @@ function setGame() {
             }
 
             if (promo03 > 50) {
+                document.getElementById("promo").children[0].src = prize3.img;
+                document.getElementById("promo2").children[0].src = prize2.img;
                 promo1.wScratchPad("clear").show();
                 promo2.wScratchPad("clear").show();
                 document.getElementById("promo").removeAttribute("hidden");

@@ -8,11 +8,11 @@ export default {
     // input file
     entry: "./js/main.js",
 
-    plugins: [
-        new WebpackObfuscator({
-            rotateStringArray: true
-        }, ['./dist/bundle.js'])
-    ],
+    // plugins: [
+    //     new WebpackObfuscator({
+    //         rotateStringArray: true
+    //     }, ['./dist/bundle.js'])
+    // ],
 
     // output file
     output: {

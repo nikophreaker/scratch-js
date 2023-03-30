@@ -5,6 +5,7 @@
     "firebase": "^9.17.2",
     "path": "^0.12.7",
     "phaser": "^3.55.2",
+    "sweetalert2": "^11.7.3",
     "webpack": "^5.75.0"
   },
   "scripts": {
