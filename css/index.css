@@ -1,0 +1,317 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.scratchpad {
+    height: 145px;
+    margin: 0 auto;
+}
+
+/* .scratchpad {
+    width: 450px;
+    height: 445px;
+    border: solid 10px #FFFFFF;
+    margin: 0 auto;
+} */
+
+body {
+    /* background: #efefef; */
+    background-image: url('../img/bg.jpg');
+     font-family: 'Lato';
+
+}
+
+.row-regis {
+    margin-top: 5rem;
+}
+
+#canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+
+.card-body{
+    margin-top: 14.8rem;
+}
+
+/* .form-control{
+    background-image: url('../img/username.png');
+    background-size: 299px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0;
+    height: 75px;
+    background-color: transparent;
+    border: none;
+} */
+
+.form-control{
+    background-image:url('../img/username1.png');
+    height: 4.7rem;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+}
+
+
+.btn{
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #a1171b;
+    --bs-btn-border-color: #f3bf6e;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #bb2d3b;
+    --bs-btn-hover-border-color: #f3bf6e;
+    --bs-btn-focus-shadow-rgb: 225,83,97;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #b02a37;
+    --bs-btn-active-border-color: #a52834;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #dc3545;
+    --bs-btn-disabled-border-color: #dc3545;
+    font-size: 1.3rem;
+    width: 148px;
+    border-radius: 1rem;
+}
+
+.card{
+    background-color: transparent;
+    border: none;
+}
+
+
+
+.form-control:focus{
+    background-image:url('../img/username1.png');
+    background-color: transparent;
+    color:transparent;
+    border-color:none;
+    outline:0;
+    box-shadow:0 0 0 .25rem transparent;
+}
+
+.form-label{
+    font-size: 0.9rem;
+}
+
+.scratch-container {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 100%;
+    position: relative;
+}
+
+.card-img-overlay {
+    top: unset;
+}
+
+.card-img{
+    width:75%;
+}
+
+.form-regis {
+    margin-bottom: 3rem;
+}
+
+.img-logo{
+    width: 25%;
+}
+
+.modal{
+    --bs-modal-zindex: 1055;
+    --bs-modal-width: 500px;
+    --bs-modal-padding: 1rem;
+    --bs-modal-margin: 0.5rem;
+    --bs-modal-color: ;
+    background-image: url('../img/claim.png');
+    background-size: 517px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    --bs-modal-bg: transparent;
+    --bs-modal-border-color: none;
+    --bs-modal-border-width: var(--bs-border-width);
+    --bs-modal-border-radius: var(--bs-border-radius-lg);
+    --bs-modal-box-shadow: none;
+    --bs-modal-inner-border-radius: calc(var(--bs-border-radius-lg) - (var(--bs-border-width)));
+    --bs-modal-header-padding-x: 1rem;
+    --bs-modal-header-padding-y: 1rem;
+    --bs-modal-header-padding: 1rem 1rem;
+    --bs-modal-header-border-color: var(--bs-border-color);
+    --bs-modal-header-border-width: var(--bs-border-width);
+    --bs-modal-title-line-height: 1.5;
+    --bs-modal-footer-gap: 0.5rem;
+    --bs-modal-footer-bg: ;
+    --bs-modal-footer-border-color: var(--bs-border-color);
+    --bs-modal-footer-border-width: var(--bs-border-width);
+}
+ 
+.modal-content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: var(--bs-modal-color);
+    pointer-events: auto;
+    background-color: transparent;
+    background-clip: padding-box;
+    border: none;
+    border-radius: var(--bs-modal-border-radius);
+    outline: 0;
+    background-image: url('../img/claim.png');
+}
+
+
+
+
+.logo{
+    margin-top: 7rem;
+}
+
+
+@media only screen and (max-width : 480px) {
+    body{
+        background-image: url('../img/bg.jpg');
+        background-size: 500px;
+        background-repeat: no-repeat;
+    }
+
+    h5{
+        font-size: 0.8rem;
+    }
+
+    .logo{
+        margin-top: 2rem;
+    }
+    .img-logo{
+        width: 70%;
+    }
+
+    .row-regis {
+        margin-top: 8rem;
+    }
+    .card-img{
+        width:100%;
+    }
+
+    .form-regis {
+        margin-bottom: 1rem;
+    }
+
+    .card-body{
+        margin-top: 14.8rem;
+    }
+
+    .form-control{
+        background-image:url('../img/username1.png');
+        height: 4.7rem;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        border: none;
+    }
+
+    .form-control:focus{
+        background-image:url('../img/username.png');
+        background-color: transparent;
+        color:transparent;
+        border-color:none;
+        outline:0;
+        box-shadow:0 0 0 .25rem transparent;
+    }
+  
+    .form-label{
+        font-size: 0.9rem;
+    }
+    
+
+    .card-regis{
+        background-image: url('../img/card.png');
+        background-size: 365px, 500px;
+        height: 34rem;
+        background-color: transparent;
+        border: none;
+        width: 23rem;
+    }
+
+   .scratchpad {
+        height: 110px;
+        margin: 0 auto;
+    }
+    
+    .modal{
+    --bs-modal-zindex: 1055;
+    --bs-modal-width: 500px;
+    --bs-modal-padding: 1rem;
+    --bs-modal-margin: 0.5rem;
+    --bs-modal-color: ;
+    background-image: url('../img/claim.png');
+    background-size: 517px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    --bs-modal-bg: transparent;
+    --bs-modal-border-color: none;
+    --bs-modal-border-width: var(--bs-border-width);
+    --bs-modal-border-radius: var(--bs-border-radius-lg);
+    --bs-modal-box-shadow: none;
+    --bs-modal-inner-border-radius: calc(var(--bs-border-radius-lg) - (var(--bs-border-width)));
+    --bs-modal-header-padding-x: 1rem;
+    --bs-modal-header-padding-y: 1rem;
+    --bs-modal-header-padding: 1rem 1rem;
+    --bs-modal-header-border-color: var(--bs-border-color);
+    --bs-modal-header-border-width: var(--bs-border-width);
+    --bs-modal-title-line-height: 1.5;
+    --bs-modal-footer-gap: 0.5rem;
+    --bs-modal-footer-bg: ;
+    --bs-modal-footer-border-color: var(--bs-border-color);
+    --bs-modal-footer-border-width: var(--bs-border-width);
+}
+ 
+.modal-content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: var(--bs-modal-color);
+    pointer-events: auto;
+    background-color: transparent;
+    background-clip: padding-box;
+    border: none;
+    border-radius: var(--bs-modal-border-radius);
+    outline: 0;
+    background-image: url('../img/claim.png');
+}
+
+
+  
+}
+
+
+.promo-container {
+    background: #FFF;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    width: 450px;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Open Sans', Arial, Sans-serif;
+    color: #333;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
