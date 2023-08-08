@@ -404,7 +404,7 @@ class claimVoucher extends Phaser.Scene {
 
 
     async claimPrize(idPrize, kode) {
-        let docRef = doc(db, col2, String(txt2));
+        let docRef = doc(db, col2, String(kupon));
         await setDoc(docRef, {
             name:username,
             kupon: kupon,
