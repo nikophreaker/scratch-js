@@ -1,6 +1,6 @@
 import {initializeApp} from "firebase/app";
 import {getDatabase} from "firebase/database";
-import {getFirestore, query, where, collection, doc ,getDocs, updateDoc, setDoc} from "firebase/firestore";
+import {getFirestore, query, where, collection, doc, getDoc ,getDocs, updateDoc, setDoc} from "firebase/firestore";
 
 // CONFIGURASI FIREBASE
 const firebaseConfig = {
