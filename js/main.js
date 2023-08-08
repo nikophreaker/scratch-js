@@ -403,16 +403,16 @@ class claimVoucher extends Phaser.Scene {
     async claimPrize(idPrize, kode) {
         let docRef = doc(db, col2, String(kode));
         await setDoc(docRef, {
-            name:username,
-            kupon: kupon,
-            idPrize: idPrize.text,
+            name: username,
+            kupon: kode,
+            prize: idPrize.text,
             date: tglIndonesia(),
             timestamp: Math.floor(Date.now() / 1000),
         }).then(()=> {
             // Build formData object.
             let formData = new FormData();
             formData.append('reward', `${idPrize.text}`);
-            var msg = `Saya Mendapatkan *${idPrize.text}* dari m88scratch.com dengan kode voucher *${kode}*`;
+            var msg = `Saya Mendapatkan *${idPrize.text}* dari m88scratch dengan kode voucher *${kode}*`;
             // var url = 'https://t.me/+6281288522088'; //tele
             var url = `whatsapp://send?phone=${settings.numberphone}&text=` + encodeURIComponent(msg); // wa
             navigator.clipboard.writeText(msg);
