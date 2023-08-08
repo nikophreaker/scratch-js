@@ -23,17 +23,38 @@ const database = getDatabase(app);
 const db = getFirestore(app);
 const col = "kuponscratch";
 const col2 = "prize-scratch";
+const col3 = "kuponsratch-settings";
 const colRef = collection(db, col);
 const colRef2 = collection(db, col2);
+const docRef = doc(db, col3, "1");
 
 var username;
 var kode;
+var settings;
 
 export var game;
 
+const gettingSettingData = async () => {
+    //Get Setting Data
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+        // console.log(docSnap.data())
+        return docSnap.data()
+    } else {
+        console.log("No such Document!")
+    }
+}
 
 let dpr;
-window.onload = function () {
+
+window.onload = new Promise(() => {
+    return gettingSettingData().then(data => {
+        settings = data
+        games()
+    })
+})
+
+const games = function () {
 
     // game configuration object
     let gameConfig = {
@@ -380,15 +401,13 @@ class claimVoucher extends Phaser.Scene {
 
 
 
-
-
     claimPrize(idPrize, kode) {
         // Build formData object.
         let formData = new FormData();
         formData.append('reward', `${idPrize}`);
         var msg = `Saya Mendapatkan *${idPrize.text}* dari m88scratch.com dengan kode voucher *${kode}*`;
         // var url = 'https://t.me/+6281288522088'; //tele
-        var url = 'https://wa.me/?phone=639691475492&text=' + encodeURIComponent(msg); // wa
+        var url = `whatsapp://send?phone=${settings.numberphone}&text=` + encodeURIComponent(msg); // wa
         navigator.clipboard.writeText(msg);
         // alert(msg);
 
