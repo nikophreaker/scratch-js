@@ -31,6 +31,7 @@ const docRef = doc(db, col3, "1");
 var username;
 var kode;
 var settings;
+var kupon;
 
 export var game;
 
@@ -188,6 +189,7 @@ class kuponVoucher extends Phaser.Scene {
                                     active: false
                                 })
                                 .then(async() => {
+                                    kupon = txt2;
                                     await setDoc(docRef, {
                                         name:username,
                                         kupon: txt2,
@@ -291,6 +293,7 @@ class kuponVoucher extends Phaser.Scene {
                                     active: false
                                 })
                                 .then(async() => {
+                                    kupon = txt2;
                                     await setDoc(docRef, {
                                         name:username,
                                         kupon: txt2,
@@ -400,25 +403,32 @@ class claimVoucher extends Phaser.Scene {
     }
 
 
-
-    claimPrize(idPrize, kode) {
-        // Build formData object.
-        let formData = new FormData();
-        formData.append('reward', `${idPrize}`);
-        var msg = `Saya Mendapatkan *${idPrize.text}* dari m88scratch.com dengan kode voucher *${kode}*`;
-        // var url = 'https://t.me/+6281288522088'; //tele
-        var url = `whatsapp://send?phone=${settings.numberphone}&text=` + encodeURIComponent(msg); // wa
-        navigator.clipboard.writeText(msg);
-        // alert(msg);
-
-        var s = window.open(url, '_blank');
-
-        if (s && s.focus) {
-            s.focus();
-        }
-        else if (!s) {
-            window.location.href = url;
-        }
+    async claimPrize(idPrize, kode) {
+        let docRef = doc(db, col2, String(txt2));
+        await setDoc(docRef, {
+            name:username,
+            kupon: kupon,
+            date: tglIndonesia(),
+            timestamp: Math.floor(Date.now() / 1000),
+        }).then(()=> {
+            // Build formData object.
+            let formData = new FormData();
+            formData.append('reward', `${idPrize}`);
+            var msg = `Saya Mendapatkan *${idPrize.text}* dari m88scratch.com dengan kode voucher *${kode}*`;
+            // var url = 'https://t.me/+6281288522088'; //tele
+            var url = `whatsapp://send?phone=${settings.numberphone}&text=` + encodeURIComponent(msg); // wa
+            navigator.clipboard.writeText(msg);
+            // alert(msg);
+    
+            var s = window.open(url, '_blank');
+    
+            if (s && s.focus) {
+                s.focus();
+            }
+            else if (!s) {
+                window.location.href = url;
+            }
+        });
     }
 }
 
